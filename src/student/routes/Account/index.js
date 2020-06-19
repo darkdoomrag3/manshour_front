@@ -11,20 +11,27 @@ import WithSpinner from "../../components/WithSpinner/WithSpinner";
 import { Spinner } from "react-bootstrap";
 import AuthService from "../../../services/auth.service";
 import Alert from "../../../admin/component/Alert";
+import { atom, useRecoilState, selector } from "recoil";
+
+const handelFormStates = atom({
+  key: 'handelFormStates',
+  default: []
+})
+
+const handelLoadingState = atom({
+  key: 'handelLoadingState',
+  default: false
+})
 
 
 
-
-/// agar requre code false bod  hame fildha(stateha) be gheir az fieldhaye code baraye ro baraye rejister start befrest ba axios
-////bad az in requre code beshe true (set state bayad beshe true)
-///agar requre code true bod hame fildha bayad bere baraye rejister complite
 
 const Account = ({ props }) => {
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [code, setCode] = useState();
-  const [referencePhoneNumber, setReferencePhoneNumber] = useState();
-  const [loading, setLoading] = useState(false);
-  const [isSMSSent, setIsSMSSent] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useRecoilState(handelFormStates);
+  const [code, setCode] = useRecoilState(handelLoadingState);
+  const [referencePhoneNumber, setReferencePhoneNumber] = useRecoilState(handelFormStates);
+  const [loading, setLoading] = useRecoilState(handelLoadingState);
+  const [isSMSSent, setIsSMSSent] = useRecoilState(handelLoadingState);
 
   const handelSumbitLogin = (e) => {
     e.preventDefault();

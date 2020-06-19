@@ -9,11 +9,7 @@ import ModalComponent from "../../components/ModalComponent/ModalComponent";
 import WithSpinner from "../../components/WithSpinner/WithSpinner";
 
 import { Spinner } from "react-bootstrap";
-import AuthService from "../../../services/auth.service";
 import Alert from "../../../admin/component/Alert";
-
-
-
 
 /// agar requre code false bod  hame fildha(stateha) be gheir az fieldhaye code baraye ro baraye rejister start befrest ba axios
 ////bad az in requre code beshe true (set state bayad beshe true)
@@ -28,7 +24,6 @@ const Account = ({ props }) => {
 
   const handelSumbitLogin = (e) => {
     e.preventDefault();
-
     const btnSumbit = document.getElementById("code");
     btnSumbit.disabled = true;
 
@@ -83,9 +78,8 @@ const Account = ({ props }) => {
         console.log(e.response);
         submitBtn.disabled = false;
         setLoading(false);
-      })
-
-  }
+      });
+  };
 
   return (
     <>
@@ -110,9 +104,6 @@ const Account = ({ props }) => {
           <section id="content1" className="tab-content">
             <form onSubmit={handelSumbitLogin}>
               <div className="form-group">
-
-
-
                 <FormGroup>
                   <Input
                     type="text"
@@ -142,44 +133,40 @@ const Account = ({ props }) => {
           </section>
 
           <section id="content2" className="tab-content">
-            <form onSubmit={handleSubmitRegister}>
-              {loading ? (
-                <Spinner />
-              ) : isSMSSent ? (
-                <>
-                  <div className="form-group">
-                    <Input
-                      type="text"
-                      name="phone_number"
-                      id="phone_number"
-                      placeholder="کد"
-                      required
-                    />
-                  </div>
-                </>
-              ) : (
-                    <>
-                      <div className="form-group">
-                        <Input
-                          type="text"
-                          name="phone_number"
-                          id="phone_number"
-                          placeholder="شماره تلفن"
-                          required
-                        />
-                      </div>
-                      <div className="form-group">
-                        <Input
-                          type="text"
-                          name="reference_phone_number"
-                          id="reference_phone_number"
-                          placeholder="شماره تلفن معرف"
-                        />
-                      </div>
-                    </>
-                  )}
-              <div className="row">
-                <div className="col-md-6">
+            {loading ? (
+              <Spinner />
+            ) : isSMSSent ? (
+              <>
+                <div className="form-group">
+                  <Input
+                    type="text"
+                    name="phone_number"
+                    id="phone_number"
+                    placeholder="کد"
+                    required
+                  />
+                </div>
+              </>
+            ) : (
+              <form onSubmit={handleSubmitRegister}>
+                <div className="form-group">
+                  <Input
+                    type="text"
+                    name="phone_number"
+                    id="phone_number"
+                    placeholder="شماره تلفن"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <Input
+                    type="text"
+                    name="reference_phone_number"
+                    id="reference_phone_number"
+                    placeholder="شماره تلفن معرف"
+                  />
+                </div>
+                <div className="form-group">
                   <input
                     type="submit"
                     className="btn btn-primary"
@@ -187,13 +174,15 @@ const Account = ({ props }) => {
                     value="ثبت نام"
                   />
                 </div>
-                <div className="col-md-6">
-                  <p className="text-left">
-                    عضو هستید؟ <a href="/forget-password">وارد شوید</a>
-                  </p>
-                </div>
+              </form>
+            )}
+            <div className="row">
+              <div className="col-md-6">
+                <p className="text-left">
+                  عضو هستید؟ <a href="/forget-password">وارد شوید</a>
+                </p>
               </div>
-            </form>
+            </div>
           </section>
         </div>
       </section>

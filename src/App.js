@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import StudentDashboard from "./student/routes/Dashboard";
 import Account from "./student/routes/Account";
 import HomePage from "./public/HomePage";
@@ -13,32 +13,21 @@ import AdminPanel from "./admin/component/AdminPanel";
 import MainPage from "./admin/component/MainPage";
 import Test from "./student/components/Test/Test";
 import StudentProfile from "./student/containers/header/StudentProfile/StudentProfile";
-import { isAuthenticated } from './repository';
+import { isAuthenticated } from "./repository";
 import TeachersList from "./admin/component/TeachersList/TeachersList";
-
 
 //import { UsersList } from './admin/component/UsersList/UsersList';
 
-
-require('dotenv').config();
-
-
+require("dotenv").config();
 
 class App extends React.Component {
-
-
   logOut() {
-    localStorage.removeItem('x-access-token');
+    localStorage.removeItem("x-access-token");
   }
 
-
-
   render() {
-
-
-
     return (
-      <Router >
+      <Router>
         <Switch>
           {/* Static page routes */}
 
@@ -49,8 +38,11 @@ class App extends React.Component {
             render={(props) => <MainPage {...props} />}
           />
 
-
-
+          <Route
+            path="/signin"
+            name="ورود به حساب کاربری"
+            render={(props) => <Account {...props} />}
+          />
 
           <Route
             exact
@@ -58,7 +50,6 @@ class App extends React.Component {
             name="صفحه اصلی منشور دانش"
             render={(props) => <Test {...props} />}
           />
-
 
           <Route
             exact
@@ -74,7 +65,6 @@ class App extends React.Component {
             render={(props) => <StudentProfile {...props} />}
           />
 
-
           {/* Admin panel routes */}
           <Route
             exact
@@ -89,18 +79,11 @@ class App extends React.Component {
             render={(props) => <AdminPanel {...props} />}
           />
 
-
-
           {/* Student panel routes */}
           <Route
             path="/student"
             name="پنل دانش آموز"
             render={(props) => <StudentDashboard {...props} />}
-          />
-          <Route
-            path="/account"
-            name="ورود به حساب کاربری"
-            render={(props) => <Account {...props} />}
           />
 
           {/* Errors routes */}
@@ -111,7 +94,6 @@ class App extends React.Component {
             render={(props) => <Page500 {...props} />}
           />
           <Route name="ارور ۴۰۴" render={(props) => <Page404 {...props} />} />
-
         </Switch>
       </Router>
     );

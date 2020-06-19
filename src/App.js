@@ -13,7 +13,6 @@ import AdminPanel from "./admin/component/AdminPanel";
 import MainPage from "./admin/component/MainPage";
 import Test from "./student/components/Test/Test";
 import StudentProfile from "./student/containers/header/StudentProfile/StudentProfile";
-import { isAuthenticated } from "./repository";
 import TeachersList from "./admin/component/TeachersList/TeachersList";
 
 //import { UsersList } from './admin/component/UsersList/UsersList';

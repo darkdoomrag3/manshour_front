@@ -14,8 +14,6 @@ export default function Alert() {
   // }, []);
 
   return errorMessage ? (
-    <div style={{ direction: "rtl" }} className={"alert alert-" + errorStatus}>
-      {errorMessage}
-    </div>
+    <div className={"alert alert-" + errorStatus}>{errorMessage}</div>
   ) : null;
 }

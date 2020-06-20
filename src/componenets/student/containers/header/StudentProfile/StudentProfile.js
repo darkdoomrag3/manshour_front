@@ -9,7 +9,8 @@ import Menu from '../../Menu';
 import Footer from '../../Footer';
 import Button from '@material-ui/core/Button';
 import Alert from '../../../../admin/component/Alert';
-
+import FormInput from '../../../components/FormInput/FormInput';
+import CustomButton from '../../../components/CustomButton/CustomButton';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +36,7 @@ export default function StudentProfile(props) {
 
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [data, setData] = useState([])
 
   const [variant, setVariant] = useState("none");
   function handleClose(e, reason) {
@@ -44,6 +46,11 @@ export default function StudentProfile(props) {
     setOpen(false);
   }
 
+
+  const handelChange = event => {
+    const { value, name } = event.target;
+    setData({ [name]: value })
+  }
 
   return (
 
@@ -63,50 +70,26 @@ export default function StudentProfile(props) {
         <Container>
           <Row>
             <Col>
-              <TextField
-                required
-                id="filled-required"
-                label="اجباری"
-                defaultValue=" نام کاربری"
-                variant="filled"
-              />
+              <FormInput name='name' type="text" label="نام" required />
 
             </Col>
 
 
             <Col>
 
-              <TextField
-                id="filled-password-input"
-                label=" نام خانوادگی"
-
-                autoComplete="current-password"
-                variant="filled"
-              />
+              <FormInput name='last name' type="text" label="نام خانوادگی" />
 
             </Col>
 
             <Col>
 
-              <TextField
-                id="filled-password-input"
-                label=" محل سکونت "
-
-                autoComplete="current-password"
-                variant="filled"
-              />
+              <FormInput name='father name' type="text" label="نام پدر" />
 
             </Col>
 
             <Col>
 
-              <TextField
-                id="filled-password-input"
-                label=" نام پدر"
-
-                autoComplete="current-password"
-                variant="filled"
-              />
+              <FormInput name='city' type="text" label="شهر" />
             </Col>
 
           </Row>
@@ -115,25 +98,12 @@ export default function StudentProfile(props) {
 
             <Col>
 
-              <TextField
-                id="filled-password-input"
-                label="  کلاس"
-
-                autoComplete="current-password"
-                variant="filled"
-              />
+              <FormInput name='natinaol id' type="text" label="شماره ملی" />
             </Col>
 
             <Col>
 
-
-              <TextField
-                id="filled-password-input"
-                label=" مدرسه"
-
-                autoComplete="current-password"
-                variant="filled"
-              />
+              <FormInput name='phone number' type="text" label="شماره تماس" />
 
 
             </Col>
@@ -141,46 +111,26 @@ export default function StudentProfile(props) {
 
             <Col>
 
-              <TextField
-                id="filled-number"
-                label="شماره ملی"
-                type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="filled"
-              />
+              <FormInput name='grade' type="text" label="کلاس" />
 
             </Col>
 
 
-            <TextField
-              id="filled-number"
-              label="شماره تماس"
-              type="number"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="filled"
-            />
+
 
 
             <Col>
-
+              <FormInput name='refrance number' type="text" label="نام معرف" />
 
             </Col>
 
           </Row>
 
           <Row>
-            <Button
-              variant="contained"
-              component="span"
-              color="secondary"
-              className={classes.button}
-            >
-              ثبت ویرایش
-                  </Button>
+
+
+            <CustomButton > ثبت تغییرات </CustomButton>
+
           </Row>
 
 

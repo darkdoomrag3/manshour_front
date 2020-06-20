@@ -6,6 +6,10 @@ const handelFormState = atom({
     default: [],
 });
 
+const [phoneNumber, setPhoneNumber] = useRecoilState(getFormState);
+const [referencePhoneNumber, setReferencePhoneNumber] = useRecoilState(getFormState);
+
+
 const getFormState = selector({
     key: 'getForm',
     get: ({ get }) => {
@@ -49,9 +53,6 @@ const getFormState = selector({
         }
     },
 });
-
-const [phoneNumber, setPhoneNumber] = useRecoilState(getFormState);
-const [referencePhoneNumber, setReferencePhoneNumber] = useRecoilState(getFormState);
 
 
 
